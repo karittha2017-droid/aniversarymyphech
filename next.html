@@ -1,10 +1,3 @@
-<?php
-$imageFiles = glob(__DIR__ . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE) ?: [];
-$imageFiles = array_map('basename', $imageFiles);
-sort($imageFiles, SORT_NATURAL | SORT_FLAG_CASE);
-$musicFiles = glob(__DIR__ . '/*.{mp3,wav,ogg,m4a}', GLOB_BRACE) ?: [];
-$musicFile = $musicFiles[0] ?? '';
-?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -41,7 +34,7 @@ $musicFile = $musicFiles[0] ?? '';
         .music-background { position: fixed; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
         .hearts { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
         .hearts .heart { position: absolute; bottom: -40px; width: auto; height: auto; color: #ff77b7; font-size: 26px; opacity: 0.8; animation: floatUp linear infinite; }
-        @keyframes floatUp { 0% { transform: translateY(0) scale(0.9) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(-100vh) scale(1.3) rotate(18deg); opacity: 0; } }
+        @keyframes floatUp { 0% { transform: translateY(0) scale(0.9) rotate(0deg); opacity: 0; } 100% { transform: translateY(-100vh) scale(1.3) rotate(18deg); opacity: 0; } }
         .hearts .heart:nth-child(1) { left: 8%; animation-duration: 8s; }
         .hearts .heart:nth-child(2) { left: 18%; animation-duration: 10s; animation-delay: 2s; }
         .hearts .heart:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 1s; }
@@ -69,23 +62,32 @@ $musicFile = $musicFiles[0] ?? '';
                     <span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span>
                 </div>
                 <div class="image-track">
-                    <?php foreach (array_merge($imageFiles, $imageFiles) as $imageFile): ?>
-                        <img class="center-image<?php echo $imageFile === 'S__6938630.jpg' ? ' face-focus' : ''; ?>" src="<?php echo htmlspecialchars($imageFile, ENT_QUOTES, 'UTF-8'); ?>" alt="ภาพความทรงจำวันครบรอบ">
-                    <?php endforeach; ?>
+                    <img class="center-image" src="69863.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938627.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938629.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image face-focus" src="S__6938630.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938631.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938632.jpg" alt="ภาพความทรงจำ">
+                    <!-- ทำภาพวนซ้ำเพื่อให้ Animation เลื่อนต่อเนื่อง -->
+                    <img class="center-image" src="69863.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938627.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938629.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image face-focus" src="S__6938630.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938631.jpg" alt="ภาพความทรงจำ">
+                    <img class="center-image" src="S__6938632.jpg" alt="ภาพความทรงจำ">
                 </div>
             </div>
             <p class="message">ขอให้เธอรักชั้น หลงชั้น นานๆไปเนย</p>
-            <?php if ($musicFile): ?>
-                <audio class="music-background" autoplay loop preload="auto" aria-label="เพลงพื้นหลัง">
-                    <source src="<?php echo htmlspecialchars(basename($musicFile), ENT_QUOTES, 'UTF-8'); ?>" type="audio/mpeg">
-                </audio>
-            <?php endif; ?>
-            <a href="final.php" class="next-btn">ถัดไป</a>
+            
+            <audio class="music-background" autoplay loop preload="auto" aria-label="เพลงพื้นหลัง">
+                <source src="Indila - Love Story (Karaoke Version).mp3" type="audio/mpeg">
+            </audio>
+
+            <a href="final.html" class="next-btn">ถัดไป</a>
         </div>
     </div>
     <script>
         const musicPlayer = document.querySelector('.music-background');
-
         if (musicPlayer) {
             document.addEventListener('click', () => musicPlayer.play().catch(() => {}), { once: true });
         }
