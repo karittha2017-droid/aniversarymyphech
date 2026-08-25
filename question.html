@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: radial-gradient(circle at top, #3b1028, #140914 38%, #050507 100%);
+            color: #ffffff;
+        }
+        .question-box {
+            position: relative;
+            isolation: isolate;
+            width: min(100%, 520px);
+            padding: 48px 32px;
+            text-align: center;
+            background: #0c0a0f;
+            border: 2px solid transparent;
+            border-radius: 24px;
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6), 0 0 32px rgba(255, 45, 133, 0.24);
+        }
+        @property --question-border-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+        .question-box::before { content: ""; position: absolute; z-index: -2; inset: -4px; border-radius: 27px; background: conic-gradient(from var(--question-border-angle), #ffffff 0deg, rgba(255, 255, 255, 0.12) 45deg, transparent 95deg, transparent 230deg, #ff2d85 275deg, #ffffff 320deg, #ffffff 360deg); animation: questionBorderLight 2.5s linear infinite; box-shadow: 0 0 14px rgba(255, 255, 255, 0.85), 0 0 25px rgba(255, 45, 133, 0.7); }
+        .question-box::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 22px; background: #0c0a0f; }
+        @keyframes questionBorderLight { to { --question-border-angle: 360deg; } }
+        .heart { margin: 0 auto 18px; font-size: 3.5rem; color: #ff2d85; text-shadow: 0 0 18px rgba(255, 45, 133, 0.9); animation: heartbeat 1.2s ease-in-out infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.16); } }
+        h1 { margin: 0 0 34px; font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: 1px; color: #ffffff; text-shadow: 0 0 14px rgba(255, 45, 133, 0.65); }
+        .choices { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .choice { position: relative; isolation: isolate; min-width: 140px; padding: 13px 24px; border: 2px solid transparent; border-radius: 999px; background: linear-gradient(135deg, #be185d, #ff2d85); color: #ffffff; text-decoration: none; font-size: 1.05rem; font-weight: 700; box-shadow: 0 10px 24px rgba(255, 45, 133, 0.3); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        @property --choice-border-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+        .choice::before { content: ""; position: absolute; z-index: -2; inset: -4px; border-radius: 999px; background: conic-gradient(from var(--choice-border-angle), transparent 0deg, transparent 245deg, #ffffff 290deg, #ff2d85 325deg, transparent 360deg); opacity: 0; box-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 45, 133, 0.75); }
+        .choice::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 999px; background: linear-gradient(135deg, #be185d, #ff2d85); }
+        .choice:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(255, 45, 133, 0.48); }
+        .choice:hover::before { opacity: 1; animation: choiceBorderLight 1.4s linear infinite; }
+        .choice:last-child { background: #ffffff; color: #be185d; }
+        .choice:last-child::after { background: #ffffff; }
+        @keyframes choiceBorderLight { to { --choice-border-angle: 360deg; } }
+        @media (max-width: 420px) { .question-box { padding: 38px 20px; } .choice { width: 100%; } }
+    </style>
+</head>
+<body>
+    <main class="question-box">
+        <div class="heart" aria-hidden="true">❤</div>
+        <h1>DO U LUV ME ?</h1>
+        <div class="choices">
+            <a class="choice" href="happy.php">รัก</a>
+            <a class="choice" href="happy.php">รักมาก</a>
+        </div>
+    </main>
+</body>
+</html>
